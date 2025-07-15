@@ -23,3 +23,8 @@ This lightweight app uses CSV files and the KEGG API to provide a responsive, cl
 
 ```cd kegg_bigg_model```
 
+### 3. Set up a virtual environment (optional but recommended)
+```python -m venv venv```
+
+```source venv/bin/activate # For Windows: venv\Scripts\activate```
+
