@@ -19,6 +19,6 @@ This lightweight app uses CSV files and the KEGG API to provide a responsive, cl
 
 ### 1. Clone the repository
 
-```git clone https://github.com/bkcodes22/kegg_bigg_model.git```< br / >
+```git clone https://github.com/bkcodes22/kegg_bigg_model.git```<br/>
 ```cd kegg_bigg_model```
 
