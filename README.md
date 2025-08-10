@@ -44,6 +44,8 @@ This lightweight app KEGG API to provide a responsive, clickable interface for b
 
 ```pip install my-kegg-app```
 
+```run-kegg-app```
+
 
 ---
 
@@ -90,6 +92,7 @@ This project is licensed under the MIT License.
 ---
 
 > Built with ❤️ for scientists, students, and data nerds everywhere.
+
 
 
 
