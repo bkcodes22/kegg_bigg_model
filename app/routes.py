@@ -9,10 +9,16 @@ import os
 
 main = Blueprint('main', __name__)
 
-# Load CSVs
+# Load CSV/TSV data
 data_dir = os.path.dirname(__file__)
 bigg_ec_db = pd.read_csv(os.path.join(data_dir, 'bigg_ec_database.csv'))
 kegg_db = pd.read_csv(os.path.join(data_dir, 'keggid_bigg_db.csv'))
+
+# NEW: Load TSV for detailed KEGG reactions
+kegg_detailed = pd.read_csv(
+    os.path.join(data_dir, 'kegg_resctions_detailed.tsv'),
+    sep='\t'
+)
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
@@ -71,8 +77,19 @@ def ec_info(ec_number):
 @main.route('/kegg_info/<reaction_id>')
 def kegg_info(reaction_id):
     matches = kegg_db[kegg_db['kegg_reactions'].str.contains(reaction_id, na=False)]
+
+    html = ""
     if matches.empty:
-        return f"<h4>No information found for KEGG Reaction {reaction_id}</h4>"
-    html = f"<h4>Entries for KEGG Reaction {reaction_id}</h4>"
-    html += matches.to_html(index=False, escape=False)
+        html += f"<h4>No information found for KEGG Reaction {reaction_id}</h4>"
+    else:
+        html += f"<h4>Entries for KEGG Reaction {reaction_id}</h4>"
+        html += matches.to_html(index=False, escape=False)
+
+    # NEW: Add reaction description if available
+    detailed_match = kegg_detailed[kegg_detailed['Abbreviation'] == reaction_id]
+    if not detailed_match.empty:
+        reaction_desc = detailed_match.iloc[0]['Reaction_desc']
+        html += f"<h4>Reaction Description</h4><p>{reaction_desc}</p>"
+
     return html
+
