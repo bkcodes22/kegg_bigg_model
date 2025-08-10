@@ -40,6 +40,11 @@ This lightweight app KEGG API to provide a responsive, clickable interface for b
 ### 5. Then open in your browser:
 ```http://127.0.0.1:5000```
 
+### 6. Update! - You can install now through pip
+
+```pip install my-kegg-app```
+
+
 ---
 
 ## 💡 Example KEGG Map Inputs
@@ -85,6 +90,7 @@ This project is licensed under the MIT License.
 ---
 
 > Built with ❤️ for scientists, students, and data nerds everywhere.
+
 
 
 
